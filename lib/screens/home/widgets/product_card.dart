@@ -21,11 +21,20 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
       ),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF000000).withOpacity(0.1),
+              blurRadius: 10.0,
+              offset: const Offset(0, 3),
+              spreadRadius: 1,
+            ),
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -118,6 +127,8 @@ class ProductCard extends StatelessWidget {
               )),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                      side: BorderSide(
+                          color: Color(0xFF000000).withOpacity(0.2), width: 1),
                       backgroundColor: Colors.white,
                       fixedSize: const Size(double.infinity, 20)),
                   onPressed: () {},
@@ -126,7 +137,7 @@ class ProductCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color(0xFF5764DA),
                       fontFamily: 'Popins',
                     ),
                   ))

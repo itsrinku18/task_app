@@ -5,13 +5,20 @@ class OfferCardView extends StatelessWidget {
   final LinearGradient gradientListOfColors;
   final String imagePath;
   final String buttonText;
+  final String title;
+  final String subTitle;
+  final bool isEnabled;
+  final VoidCallback onPressed;
 
   const OfferCardView(
       {super.key,
       required this.gradientListOfColors,
       required this.imagePath,
       required this.buttonText,
-      e});
+      required this.onPressed,
+      required this.title,
+      required this.subTitle,
+      this.isEnabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -37,45 +44,26 @@ class OfferCardView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'Claim your gift ',
-              style: TextStyle(
+            Text(
+              title,
+              style: const TextStyle(
                 fontFamily: 'Popins',
-                fontSize: 18,
+                fontSize: 14,
               ),
             ),
             const SizedBox(
               height: 6,
             ),
-            RichText(
-                text: TextSpan(children: [
-              const TextSpan(
-                text: 'of ',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+            Text(
+              subTitle,
+              style: const TextStyle(
                   fontFamily: 'Popins',
-                ),
-              ),
-              WidgetSpan(
-                  child: Image.asset(
-                'assets/images/coin.png',
-                width: 20,
-                height: 20,
-              )),
-              const TextSpan(
-                text: ' 250',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Popins',
-                ),
-              ),
-            ])),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
+
             const SizedBox(
-              height: 8,
+              height: 16,
             ),
             const AppLayoutBuilderWidget(
               randomDivider: 15,
@@ -88,14 +76,17 @@ class OfferCardView extends StatelessWidget {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: isEnabled ? Colors.white : Colors.white,
                   minimumSize: const Size(double.infinity, 40),
                 ),
-                onPressed: () {},
+                onPressed: isEnabled ? onPressed : null,
                 child: Text(
                   buttonText,
-                  style: const TextStyle(
-                      fontFamily: 'Popins', fontSize: 14, color: Colors.black),
+                  style: TextStyle(
+                      fontFamily: 'Popins',
+                      fontSize: 14,
+                      fontWeight:
+                          isEnabled ? FontWeight.normal : FontWeight.bold),
                 ))
             // dotted line
           ],

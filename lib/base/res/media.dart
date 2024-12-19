@@ -9,4 +9,5 @@ class AppMedia {
   static const productImg2 = '$_baseImage/product_img_2.png';
   static const productImg3 = '$_baseImage/product_img_3.png';
   static const productImg4 = '$_baseImage/product_img_4.png';
+  static const upiImage = '$_baseImage/upi_img.png';
 }
